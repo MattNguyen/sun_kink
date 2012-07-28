@@ -1,0 +1,253 @@
+h1. !http://railsapps.github.com/images/rails-36x36.jpg(Rails Composer)! Rails Composer
+
+An application template that creates a Rails 3.2 starter app.
+
+See "the Rails Composer project page":http://railsapps.github.com/rails-composer.
+
+It's the Rails generator on steroids.
+
+h2. !http://twitter-badges.s3.amazonaws.com/t_logo-a.png(Follow on Twitter)!:http://www.twitter.com/rails_apps Follow on Twitter
+
+Follow the project on Twitter: "@rails_apps":http://twitter.com/rails_apps. Please tweet some praise if you like what you've found.
+
+h2. Creating a Starter App
+
+To build a Rails application, run the command (where @myapp@ is the name of your application):
+
+<pre>
+$ rails new myapp -m https://raw.github.com/RailsApps/rails-composer/master/composer.rb
+</pre>
+
+You can use the @-T@ flag to skip Test::Unit files or the @-O@ flag to skip Active Record files:
+
+<pre>
+$ rails new myapp -m https://raw.github.com/RailsApps/rails-composer/master/composer.rb -T -O
+</pre>
+
+h2. Your Options
+
+The Rails Composer application template will ask you for various preferences, some of which will depend on previous choices. Here's an example:
+
+<pre>
+question  Web server for development?
+      1)  WEBrick (default)
+      2)  Thin
+      3)  Unicorn
+      4)  Puma
+
+question  Web server for production?
+      1)  Same as development
+      2)  Thin
+      3)  Unicorn
+      4)  Puma
+
+question  Database used in development?
+      1)  SQLite
+      2)  PostgreSQL
+      3)  MySQL
+      4)  MongoDB
+
+question  Template engine?
+      1)  ERB
+      2)  Haml
+
+question  Testing framework?
+      1)  Test::Unit
+      2)  RSpec with Capybara and Cucumber
+      3)  RSpec with Capybara and Turnip
+      4)  RSpec with Capybara
+
+question  Fixture replacement?
+      1)  None
+      2)  Factory Girl
+      3)  Machinist
+
+question  Front-end framework?
+      1)  None
+      2)  Twitter Bootstrap (Sass)
+      3)  Twitter Bootstrap (Less)
+      4)  Zurb Foundation
+      5)  Skeleton
+      6)  Just normalize CSS for consistent styling
+
+question  Form builder?
+      1)  None
+      2)  SimpleForm
+
+question  Add support for sending email?
+      1)  None
+      2)  Gmail
+      3)  SMTP
+      4)  SendGrid
+      5)  Mandrill
+
+question  Authentication?
+      1)  None
+      2)  Devise
+      3)  OmniAuth
+
+question  Devise modules?
+      1)  Devise with default modules
+      2)  Devise with Confirmable module
+      3)  Devise with Confirmable and Invitable modules
+
+question  Authorization?
+      1)  None
+      2)  CanCan with Rolify
+
+question  Install a starter app?
+      1)  None
+      2)  Home Page
+      3)  Home Page, User Accounts
+      4)  Home Page, User Accounts, Admin Dashboard
+</pre>
+
+h2. Run the Application
+
+Switch to the application root directory to examine and test what you've built.
+
+<pre>
+$ cd myapp
+</pre>
+
+h4. Quick Test
+
+For a "smoke test" to see if everything runs, display a list of Rake tasks.
+
+<pre>
+$ rake -T
+</pre>
+
+There's no need to run @bundle exec rake@ instead of @rake@ when you are using rvm (see "rvm and bundler integration":https://rvm.io/integration/bundler/).
+
+h4. Start the Web Server
+
+If you've chosen WEBrick or Thin for your web server, can run the app by entering the command:
+
+@$ rails server@
+
+To see your application in action, open a browser window and navigate to "http://localhost:3000/":http://localhost:3000.
+
+For the Unicorn web server:
+
+@$ unicorn@
+
+See the app at "http://localhost:8080/":http://localhost:8080.
+
+For the Puma web server:
+
+@$ rails server puma@
+
+See the app at "http://localhost:3000/":http://localhost:3000.
+
+h4. Login
+
+If you've created a version of the application that sets up a default user, log in with:
+
+* email: user@example.com
+* password: please
+
+You should delete or change any pre-configured logins before you deploy your application.
+
+h2. Testing
+
+Some versions of the starter application will contain a suite of RSpec unit tests or Cucumber scenarios and step definitions.
+
+After installing the application, run @rake -T@ to check that rake tasks for RSpec and Cucumber are available.
+
+Run @rake spec@ to run all RSpec tests.
+
+Run @rake cucumber@ (or more simply, @cucumber@) to run all Cucumber scenarios.
+
+Please send the author a message, create an issue, or submit a pull request if you can contribute improved RSpec or Cucumber files.
+
+h2. Deployment
+
+For easy deployment, use a “platform as a service” provider such as:
+
+* "Heroku":http://www.heroku.com/
+* "CloudFoundry":http://www.cloudfoundry.com/
+* "EngineYard":http://www.engineyard.com/
+* "OpenShift":https://openshift.redhat.com/app/
+
+For deployment on Heroku, see the article:
+
+* "Rails on Heroku":http://railsapps.github.com/rails-heroku-tutorial.html
+
+h2. Application Template Default
+
+The @rails new@ command creates a new Rails application. If you want to use the Rails Composer application template for every Rails application you build, you can set options for the @rails new@ command in a *.railsrc* file in your home directory. Here's how to set up a *.railsrc* file to use the template when you create a new Rails application:
+
+<pre>
+# ~/.railsrc
+-m https://raw.github.com/RailsApps/rails-composer/master/composer.rb
+</pre>
+
+h2. Troubleshooting
+
+Problems? Check the "issues for the rails_apps_composer gem":https://github.com/RailsApps/rails_apps_composer/issues.
+
+You should review the article "Installing Rails":http://railsapps.github.com/installing-rails.html to make sure you've updated all the components that are required to run Rails successfully.
+
+h4. Problems with  "Certificate Verify Failed"
+
+Are you getting an error "OpenSSL certificate verify failed" when you try to generate a new Rails app from an application template? See suggestions to resolve the error "Certificate Verify Failed":http://railsapps.github.com/openssl-certificate-verify-failed.html.
+
+h4. Problems with "Segmentation Fault"
+
+If you get a "segfault" when you try @rails new@, try removing and reinstalling rvm.
+
+h2. Documentation and Support
+
+The Rails Composer application template is assembled from recipes supplied by the "rails_apps_composer":https://github.com/RailsApps/rails_apps_composer gem. See the rails_apps_composer project to understand how the Rails Composer application works.
+
+h4. Customizing the Template
+
+If you wish to change the template to generate an app with your own customized options, you can copy and edit the template file. However, it is better to use the "rails_apps_composer":https://github.com/RailsApps/rails_apps_composer gem to create a new application template. You'll find newer versions of the recipes that make up the application template. You may find issues have been identified and (perhaps) fixed. And it will be easier to maintain your application template if you work from the "rails_apps_composer":https://github.com/RailsApps/rails_apps_composer gem.
+
+h4. Writing Recipes
+
+To understand the code in these templates, take a look at "Thor::Actions":http://rdoc.info/github/wycats/thor/master/Thor/Actions. Your recipes can use any methods provided by "Thor::Actions":http://rdoc.info/github/wycats/thor/master/Thor/Actions or "Rails::Generators::Actions":http://railsapi.com/doc/rails-v3.0.3/classes/Rails/Generators/Actions.html.
+
+h4. About Rails Application Templates
+
+"Cooking Up A Custom Rails 3 Template (11 Oct 2010) by Andrea Singh":http://blog.madebydna.com/all/code/2010/10/11/cooking-up-a-custom-rails3-template.html
+"Rails Application Templates (16 Sept 2010) by Collin Schaafsma":http://quickleft.com/blog/rails-application-templates
+"Application templates in Rails 3 (18 Sept 2009) by Ben Scofield":http://benscofield.com/2009/09/application-templates-in-rails-3/
+"Railscasts: App Templates in Rails 2.3 (9 Feb 2009) by Ryan Bates":http://railscasts.com/episodes/148-app-templates-in-rails-2-3
+"Rails templates (4 Dec 2008) by Pratik Naik":http://m.onkey.org/rails-templates
+
+h4. Similar Projects
+
+There are many similar projects:
+
+* "Rails application template projects":http://railsapps.github.com/rails-application-templates.html
+* "Rails examples, tutorials, and starter apps":http://railsapps.github.com/rails-examples-tutorials.html.
+
+h4. Issues
+
+Please review "issues for the rails_apps_composer gem":https://github.com/RailsApps/rails_apps_composer/issues and submit any issues there.
+
+h4. Where to Get Help
+
+Your best source for help with problems is "Stack Overflow":http://stackoverflow.com/questions/tagged/ruby-on-rails-3. Your issue may have been encountered and addressed by others.
+
+You can also try "Rails Hotline":http://www.railshotline.com/, a free telephone hotline for Rails help staffed by volunteers.
+
+h2. Contributing
+
+Please make changes to the "rails_apps_composer":https://github.com/RailsApps/rails_apps_composer gem rather than changing the Rails Composer application template.
+
+h2. Credits
+
+Daniel Kehoe initiated the "RailsApps project":https://github.com/RailsApps and created the Rails Composer application template.
+
+Is it useful to you? Follow the project on Twitter:
+"@rails_apps":http://twitter.com/rails_apps
+and tweet some praise. I'd love to know you were helped out by what I've put together.
+
+h2. License
+
+"MIT License":http://www.opensource.org/licenses/mit-license
+
+Copyright 2012 Daniel Kehoe
